@@ -1,8 +1,6 @@
 import xml.etree.ElementTree as ET
 import urllib
 
-from datetime import datetime
-
 import pandas as pd
 
 from serenata_toolbox.datasets.helpers import (
@@ -30,8 +28,8 @@ class SpeechesDataset:
         The date range provided should be specified as a string using the
         format supported by the API (%d/%m/%Y)
         """
-        range = {'dataIni': range_start, 'dataFim': range_end}
-        url = self.URL.format(**range)
+        date_range = {'dataIni': range_start, 'dataFim': range_end}
+        url = self.URL.format(**date_range)
         xml = urllib.request.urlopen(url)
 
         tree = ET.ElementTree(file=xml)
